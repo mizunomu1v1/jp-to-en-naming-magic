@@ -14,8 +14,16 @@
   "contributes": {
     "commands": [
       {
-        "command": "jp-to-en-naming-magic.helloWorld",
-        "title": "Hello World"
+        "command": "extension.sayHello",
+        "title": "sayHello"
+      },
+      {
+        "command": "extension.callGetApi",
+        "title": "callGetApi"
+      },
+      {
+        "command": "extension.callPostApi",
+        "title": "callPostApi"
       }
     ]
   },
