@@ -1,26 +1,23 @@
-// The module 'vscode' contains the VS Code extensibility API
-// Import the module and reference it with the alias vscode in your code below
 import * as vscode from 'vscode';
 
-// This method is called when your extension is activated
-// Your extension is activated the very first time the command is executed
+//-------------
+// extension.ts: 拡張機能の「何をするか」を書くメインファイル
+//-------------
+
+// activate関数: 拡張機能が有効になったときに実行される
 export function activate(context: vscode.ExtensionContext) {
 
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('Congratulations, your extension "jp-to-en-naming-purrfect" is now active!');
+	// 一度だけ実行される
+	console.log('Congratulations, your extension "now active!');
 
-	// The command has been defined in the package.json file
-	// Now provide the implementation of the command with registerCommand
-	// The commandId parameter must match the command field in package.json
-	const disposable = vscode.commands.registerCommand('jp-to-en-naming-purrfect.helloWorld', () => {
-		// The code you place here will be executed every time your command is executed
-		// Display a message box to the user
-		vscode.window.showInformationMessage('Hello World from jp-to-en-naming-purrfect!');
+    // コマンド登録
+	const disposable = vscode.commands.registerCommand('helloWorld', () => {
+        // メッセージを表示する
+        vscode.window.showInformationMessage('にゃんこが「こんにちは！」って言ったにゃ 🐾');
 	});
 
 	context.subscriptions.push(disposable);
 }
 
-// This method is called when your extension is deactivated
+//  deactivate関数: 拡張機能が無効になったときに呼び出される
 export function deactivate() {}

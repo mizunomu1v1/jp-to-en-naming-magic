@@ -1,6 +1,6 @@
-# jp-to-en-naming-purrfect README
+# jp-to-en-naming-magic README
 
-This is the README for your extension "jp-to-en-naming-purrfect". After writing up a brief description, we recommend including the following sections.
+This is the README for your extension "jp-to-en-naming-magic". After writing up a brief description, we recommend including the following sections.
 
 ## Features
 
