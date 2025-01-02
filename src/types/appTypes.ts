@@ -3,7 +3,7 @@ export const SOURCE_TEXT = 'text' as const;
 export const SOURCE_TARGET = 'en' as const;
 
 /**
- * 翻訳ＡＰＩ リクエストボディ型
+ * 翻訳APIリクエストボディの型
  */
 export type TranslateApiRequestBody = {
   q: string; // 翻訳するテキスト
@@ -13,7 +13,7 @@ export type TranslateApiRequestBody = {
 };
 
 /**
- * 翻訳ＡＰＩ レスポンス型
+ * 翻訳APIレスポンスの型
  */
 export type TranslateApiResponse = {
   translatedText: string; // 翻訳されたテキスト
