@@ -1,5 +1,5 @@
 /**
- * ＧＥＴＡＰＩレスポンス型
+ * GetApiレスポンスの型
  */
 export type GetApiResponse = {
   userId: number;
@@ -9,7 +9,7 @@ export type GetApiResponse = {
 };
 
 /**
- * ＰＯＳＴＡＰＩリクエストボディ型
+ * PostApiリクエストボディの型
  */
 export type PostApiRequestBody = {
   title: string;
@@ -18,7 +18,7 @@ export type PostApiRequestBody = {
 };
 
 /**
- * ＰＯＳＴＡＰＩレスポンス型
+ * PostApiレスポンスの型
  */
 export type PostApiResponse = {
   id: number;

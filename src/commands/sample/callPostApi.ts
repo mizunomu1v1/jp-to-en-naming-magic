@@ -1,16 +1,33 @@
 import * as vscode from 'vscode';
 
-import { GET_API_BASE_URL } from '../../constants/sample/sampleConstants';
-import { PostApiResponse } from '../../types/sample/sampleTypes';
+import { POST_API_BASE_URL } from '../../constants/sample/sampleConstants';
+import {
+  PostApiRequestBody,
+  PostApiResponse,
+} from '../../types/sample/sampleTypes';
 
+import { ERROR_DETAILS, ERROR_TITLES } from '../../constants/commonConstants';
 import { ApiResponse, ErrorResponse } from '../../types/commonType';
 
-// ＰＯＳＴＡＰＩ呼び出しコマンド
+// PostApi呼び出しコマンド
 export const callPostApi = async () => {
-  const postApiResponse: ApiResponse<PostApiResponse> = await callSampleAPI();
+  // 入力ダイアログを表示
+  const userInput = await vscode.window.showInputBox({
+    prompt: 'なにか言ってみてにゃん🐈',
+    placeHolder: '例: ぷにゃん',
+  });
+
+  if (!userInput) {
+    vscode.window.showWarningMessage('文字が入力されにゃかった…');
+    return;
+  }
+
+  const postApiResponse: ApiResponse<PostApiResponse> = await callSampleAPI(
+    userInput,
+  );
 
   if (isErrorResponse(postApiResponse)) {
-    console.error('エラーが発生しました:', postApiResponse);
+    console.error(postApiResponse);
     return;
   }
 
@@ -18,22 +35,38 @@ export const callPostApi = async () => {
 };
 
 /**
- * ＰＯＳＴＡＰＩ呼び出し関数
+ * PostApi呼び出し関数
  * @returns
  */
-const callSampleAPI = async (): Promise<ApiResponse<PostApiResponse>> => {
+const callSampleAPI = async (
+  userInput: string,
+): Promise<ApiResponse<PostApiResponse>> => {
+  const requestBody: PostApiRequestBody = {
+    title: userInput,
+    body: 'bar',
+    userId: 1,
+  };
+
   try {
-    const response = await fetch(GET_API_BASE_URL);
+    const response = await fetch(POST_API_BASE_URL, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      // ボディをJSON形式に変換して送信
+      body: JSON.stringify(requestBody),
+    });
+
     const apiResponse: PostApiResponse =
       (await response.json()) as PostApiResponse;
 
     return apiResponse;
   } catch (error) {
     return {
-      error: 'true',
-      method: 'string',
-      title: 'string',
-      detail: 'string;',
+      error: error instanceof Error ? error.message : String(error),
+      method: 'callSampleAPI',
+      title: ERROR_TITLES.CALL_API,
+      detail: ERROR_DETAILS.CALL_POST_API,
     };
   }
 };
