@@ -1,12 +1,15 @@
 import * as vscode from 'vscode';
 
-import { POST_API_BASE_URL } from '../../constants/sample/sampleConstants';
+import {
+  JSON_PLACHHOLDER_API_POST,
+  POST_API_BASE_URL,
+} from '../../constants/sample/sampleConstants';
 import {
   PostApiRequestBody,
   PostApiResponse,
 } from '../../types/sample/sampleTypes';
 
-import { ERROR_DETAILS, ERROR_TITLES } from '../../constants/commonConstants';
+import { ERROR_TITLES, NYAN_MESSAGES } from '../../constants/commonConstants';
 import { ApiResponse, ErrorResponse } from '../../types/commonType';
 
 // PostApi呼び出しコマンド
@@ -65,8 +68,8 @@ const callSampleAPI = async (
     return {
       error: error instanceof Error ? error.message : String(error),
       method: 'callSampleAPI',
-      title: ERROR_TITLES.CALL_API,
-      detail: ERROR_DETAILS.CALL_POST_API,
+      title: ERROR_TITLES.CALL_FAILED,
+      detail: NYAN_MESSAGES.ERROR.CALL_FAILED(JSON_PLACHHOLDER_API_POST),
     };
   }
 };

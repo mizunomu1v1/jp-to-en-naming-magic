@@ -14,20 +14,8 @@
   "contributes": {
     "commands": [
       {
-        "command": "extension.sayHello",
-        "title": "sayHello"
-      },
-      {
-        "command": "extension.callGetApi",
-        "title": "callGetApi"
-      },
-      {
-        "command": "extension.callPostApi",
-        "title": "callPostApi"
-      },
-      {
-        "command": "extension.callTranslateApi",
-        "title": "callTranslateApi"
+        "command": "extension.translate",
+        "title": "translate"
       }
     ]
   },
